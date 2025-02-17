@@ -1,0 +1,196 @@
+ 
+
+ => FREE HTML TEMPLATE LICENSE BY HTML Codex
+
+ All free HTML templates by HTML Codex are licensed under a Creative Commons Attribution 4.0 International License which means you are not allowed to remove the author�s credit link/attribution link/backlink.
+
+ When you download or use our free HTML templates, it will attribute the following conditions.
+
+
+ => YOU ARE ALLOWED
+
+      1. You are allowed to use for your personal and commercial purposes.
+
+      2. You are allowed to modify/customize however you like.
+
+      3. You are allowed to convert/port for use for any CMS.
+
+      4. You are allowed to share/distribute under the HTML Codex brand name.
+
+      5. You are allowed to put a screenshot or a link on your blog posts or any other websites.
+
+
+ => YOU ARE NOT ALLOWED
+
+      1. You are not allowed to remove the author�s credit link/attribution link/backlink without purchasing Credit Removal License ( https://htmlcodex.com/credit-removal ).
+
+      2. You are not allowed to sell, resale, rent, lease, license, or sub-license.
+
+      3. You are not allowed to upload on your template websites or template collection websites or any other third party websites without our permission.
+
+ This license can be terminated if you breach any of these conditions.
+
+ Please contact us (https://htmlcodex.com/contact) if you have any query.
+
+ => PURCHASE CREDIT REMOVAL LICENSE ( https://htmlcodex.com/credit-removal )
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Accordion with Smooth Transition</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #0083e9;
+        }
+
+        .accordion {
+            width: min(90vw, 500px);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .accordion-item {
+            padding: 1em;
+            background-color: #ffffff;
+            border-radius: 0.5em;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .accordion-item:not(:last-child) {
+            margin-bottom: 1em;
+        }
+
+        .accordion-content {
+            color: #606060;
+            font-size: 0.8em;
+            line-height: 1.8em;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+            padding: 0 1em;
+        }
+
+        .accordion-header {
+            font-size: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #000000;
+            font-weight: 500;
+            padding: 1em;
+        }
+
+        .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .active .accordion-content {
+            height: auto;
+            padding: 1em;
+        }
+
+        .active .arrow {
+            transform: rotate(90deg);
+        }
+
+        .active .accordion-header {
+            color: #0083e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <!-- Item 1 -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Accordion Item 1</span>
+                <span class="arrow">
+                    <i class="fa-solid fa-caret-right"></i>
+                </span>
+            </div>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nostrum omnis, cumque laborum tempora quia earum animi nulla soluta, reiciendis non placeat dolorum hic temporibus odit voluptatum et nam nesciunt.</p>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Accordion Item 2</span>
+                <span class="arrow">
+                    <i class="fa-solid fa-caret-right"></i>
+                </span>
+            </div>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nostrum omnis, cumque laborum tempora quia earum animi nulla soluta, reiciendis non placeat dolorum hic temporibus odit voluptatum et nam nesciunt.</p>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Accordion Item 3</span>
+                <span class="arrow">
+                    <i class="fa-solid fa-caret-right"></i>
+                </span>
+            </div>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nostrum omnis, cumque laborum tempora quia earum animi nulla soluta, reiciendis non placeat dolorum hic temporibus odit voluptatum et nam nesciunt.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const accordionItems = document.querySelectorAll(".accordion-item");
+
+            accordionItems.forEach((item) => {
+                const header = item.querySelector(".accordion-header");
+                const content = item.querySelector(".accordion-content");
+
+                header.addEventListener("click", function () {
+                    // Close all other accordions
+                    accordionItems.forEach((otherItem) => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove("active");
+                            otherItem.querySelector(".accordion-content").style.height = "0";
+                            otherItem.querySelector(".accordion-content").style.padding = "0 1em";
+                        }
+                    });
+
+                    // Toggle the clicked accordion
+                    if (item.classList.contains("active")) {
+                        item.classList.remove("active");
+                        content.style.height = "0";
+                        content.style.padding = "0 1em";
+                    } else {
+                        item.classList.add("active");
+                        content.style.height = content.scrollHeight + "px";
+                        content.style.padding = "1em";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
